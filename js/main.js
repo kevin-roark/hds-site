@@ -58,7 +58,7 @@
     }
 
     renderer = new THREE.WebGLRenderer();
-    renderer.setClearColor(0xffffff);
+    renderer.setClearColor(0xfefefe);
 
     resize();
     window.addEventListener('resize', resize, false);
