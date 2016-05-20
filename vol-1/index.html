@@ -7,9 +7,85 @@
     <title>HDS Vol. 1 - MULTIMEDIA ART COLLECTION</title>
 </head>
 <body>
-    <div class="release-title-text vol-1-title-text">HDS Vol. 1</div>
+    <div class="big-zone">
+      <div class="release-title-text vol-1-title-text">HDS Vol. 1</div>
+
+      <div class="release-section-header release-purchase-header">Purchase</div>
+      <div class="release-purchase-zone">
+        HDS Vol. 1 is an art compilation usb data object filled with work from a cool
+        and fun variety of sources (<a href="credits.html" target="_blank">check the list</a>).
+        HDS Vol. 1 is pay what you want with a minimum of $3 (plus shipping if u are ordering online).
+        To receive a drive, please make purchase via <a href="">Paypal</a> or directly email kevin.e.roark@gmail.com.
+        Some of the stuff is available for free below but get the whole thing please!!
+      </div>
+
+      <div class="release-section-header release-links-header">Sample Links + Downloads</div>
+      <ul class="release-links vol-1-release-links">
+        <li><a href="#" target="_blank">
+          <span class="work-artist">John West</span>
+          <span class="work-title">If You're Still Afraid You're Not Ready Yet</span>
+        </a></li>
+        <li><a href="http://dogshadow.bandcamp.com/album/dog-shadow" target="_blank">
+          <span class="work-artist">Dog Shadow</span>
+          <span class="work-title">Dog Shadow</span>
+        </a></li>
+        <li><a href="http://atsea.mistershane.com" target="_blank">
+          <span class="work-artist">Mister Shane</span>
+          <span class="work-title">At Sea</span>
+        </a></li>
+        <li><a href="#" target="_blank">
+          <span class="work-artist">Laurie Roark</span>
+          <span class="work-title">IMG_3126.JPG</span>
+        </a></li>
+        <li><a href="#" target="_blank">
+          <span class="work-artist">Claire Donato</span>
+          <span class="work-title">There Is No Right Time</span>
+        </a></li>
+        <li><a href="#" target="_blank">
+          <span class="work-artist">Canada Choate</span>
+          <span class="work-title">Canada Choate_Ulrike Müller_2015.pdf</span>
+        </a></li>
+        <li><a href="#" target="_blank">
+          <span class="work-artist">Katie Giritlian</span>
+          <span class="work-title">Narrative Bleed</span>
+        </a></li>
+        <li><a href="#" target="_blank">
+          <span class="work-artist">Dylan Kario</span>
+          <span class="work-title">DEPRESSION SESSION 2&gt;&amp;1.mp3</span>
+        </a></li>
+        <li><a href="#" target="_blank">
+          <span class="work-artist">Jane</span>
+          <span class="work-title">Camel.mp3</span>
+        </a></li>
+        <li><a href="#" target="_blank">
+          <span class="work-artist">The Dance Pit</span>
+          <span class="work-title">Club Etiquette Vol. 1</span>
+        </a></li>
+        <li><a href="#" target="_blank">
+          <span class="work-artist">Dexter Callender III</span>
+          <span class="work-title">iteration_8.tiff</span>
+        </a></li>
+        <li><a href="#" target="_blank">
+          <span class="work-artist">Anzalone</span>
+          <span class="work-title">Screen Shot 2016-05-08 at 9.22.42 PM.png</span>
+        </a></li>
+      </ul>
+    </div>
 
     <script src="/js/three.min.js"></script>
     <script src="/js/main.js"></script>
+    <script>
+      var isRed = true;
+      var releaseTitleText = document.querySelector('.release-title-text');
+      setTimeout(function() {
+        swapColors();
+        setInterval(swapColors, 3001);
+      }, 1200);
+
+      function swapColors() {
+        isRed = !isRed;
+        releaseTitleText.style.color = isRed ? 'rgb(255, 0, 0)' : 'rgb(0, 0, 255)';
+      }
+    </script>
 </body>
 </html>

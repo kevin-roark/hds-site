@@ -54,6 +54,7 @@
     scene.add(ground);
 
     bigBox = new THREE.Object3D();
+    bigBox._rotationSpeed = 0.0025;
     scene.add(bigBox);
 
     spt = createSpotLight();
@@ -93,7 +94,7 @@
       boxesAreMoving = true;
 
       setInterval(resetBoxMovements, 3000);
-    }, 5000);
+    }, 8000);
   }
 
   function animate() {
@@ -107,7 +108,8 @@
       }
     }
     else if (bigBox) {
-      bigBox.rotation.y += 0.01;
+      bigBox.rotation.y += bigBox._rotationSpeed;
+      bigBox._rotationSpeed += 0.00012;
     }
 
     if (sptColor.goingBlue) {

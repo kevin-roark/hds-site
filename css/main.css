@@ -26,6 +26,18 @@ canvas {
   width: 45%;
 }
 
+.right-zone {
+  float: right;
+  margin-right: 5%;
+  width: 45%;
+  text-align: right;
+}
+
+.big-zone {
+  margin: 0 5%;
+  width: 90%;
+}
+
 .logo-text {
   font-family: Roboto Mono, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
   font-size: 96px;
@@ -45,20 +57,12 @@ canvas {
   box-shadow: 0px 3px 6px rgba(255,255,255,0.4);
 }
 
-.right-zone {
-  float: right;
-  margin-right: 5%;
-  width: 45%;
-  text-align: right;
-}
-
 .releases {
   list-style: none;
   margin: 100px 0 20px 0;
   padding: 0;
 }
   .releases li {
-    display: inline-block;
     font-family: Roboto Mono, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
     font-size: 72px;
   }
@@ -70,12 +74,64 @@ canvas {
       }
 
 .release-title-text {
-  margin: 20px;
+  margin-top: 25px;
   font-family: Roboto Mono, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
-  font-size: 84px;
+  font-size: 124px;
 }
 
 .vol-1-title-text {
+  color: rgb(255, 0, 0);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  transition: color 3s;
+}
+
+.release-section-header {
+  margin-top: 60px;
+  font-family: Times New Roman, Times, serif;
+  font-size: 56px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.release-purchase-header {
+  color: rgb(143, 76, 240);
+}
+
+.release-purchase-zone {
+  margin-top: 20px;
+  max-width: 469px;
+  font-family: Roboto Mono, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
+  line-height: 1.5;
+}
+  .release-purchase-zone a {
+    color: rgb(0,0,255);
+  }
+
+.release-links-header {
   color: rgb(255, 255, 0);
-  text-shadow: 0px 0px 8px rgba(255, 255, 0, 0.5);
+}
+
+.release-links {
+  list-style: none;
+  margin: 30px 0 240px 0;
+  padding: 0;
+}
+  .release-links li {
+    font-family: Roboto Mono, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
+    font-size: 56px;
+    margin-bottom: 50px;
+    line-height: 1.25;
+  }
+    .release-links li a {
+      color: rgb(0, 0, 255);
+    }
+
+.work-artist {
+
+}
+  .work-artist::after {
+    content: " - ";
+  }
+
+.work-title {
+  font-style: italic;
 }
