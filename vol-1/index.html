@@ -12,11 +12,35 @@
 
       <div class="release-section-header release-purchase-header">Purchase</div>
       <div class="release-purchase-zone">
-        HDS Vol. 1 is an art compilation usb data object filled with work from a cool
-        and fun variety of sources (<a href="credits.html" target="_blank">check the list</a>).
-        HDS Vol. 1 is pay what you want with a minimum of $3 (plus shipping if u are ordering online).
-        To receive a drive, please make purchase via <a href="">Paypal</a> or directly email kevin.e.roark@gmail.com.
-        Some of the stuff is available for free below but get the whole thing please!!
+        <p>
+          HDS Vol. 1 is an art compilation usb data object filled with work from a cool
+          and fun variety of people and friends (<a href="credits.html" target="_blank">check the list</a>).
+          Some of the art is available for free below but get the whole thing please!!
+        </p>
+        <p>
+          To obtain a copy you can pay what you want with a minimum of $3 (plus shipping... if you are in New York we can deliver and give you back shipping money!!).
+          To place an order please enter the amount you'd like to pay below and use the button
+          below to pay via Paypal. Be careful to enter your correct shipping address or leave a note that says you'd prefer
+          a local delivery! See you soon and thank you! For any questions please email kevin.e.roark@gmail.com.
+        </p>
+        <div class="release-payment-zone">
+          <form name="_xclick" action="https://www.paypal.com/us/cgi-bin/webscr" method="post">
+            <input type="hidden" name="cmd" value="_xclick" />
+            <input type="hidden" name="business" value="mistershanemgmt@gmail.com" />
+            <input type="hidden" name="item_name" value="HDS Vol. 1 Physical Release" />
+            <input type="hidden" name="item_number" value="1000" />
+            <input type="hidden" name="cn" value="Leave a Note:" />
+            <input type="hidden" name="shipping" value="3" />
+            <input id="payment-return-url-input" name="return" type="hidden" value="http://www.hdsllc.website/vol-1/thanks.html" />
+            <input name="cancel_return" type="hidden" value="http://www.hdsllc.website/vol-1" />
+            <input type="hidden" name="currency_code" value="USD" />
+            <div id="pledge-enter">
+              <div class="release-payment-input-header">What I want to pay: $</div>
+              <input type="text" class="release-payment-input" name="amount" value="3.00" />
+            </div>
+            <input type="submit" class="release-paypal-button" name="submit" value="ORDER THE DRIVE" />
+          </form>
+        </div>
       </div>
 
       <div class="release-section-header release-links-header">Sample Links + Downloads</div>
@@ -72,20 +96,7 @@
       </ul>
     </div>
 
-    <script src="/js/three.min.js"></script>
-    <script src="/js/main.js"></script>
-    <script>
-      var isRed = true;
-      var releaseTitleText = document.querySelector('.release-title-text');
-      setTimeout(function() {
-        swapColors();
-        setInterval(swapColors, 3001);
-      }, 1200);
-
-      function swapColors() {
-        isRed = !isRed;
-        releaseTitleText.style.color = isRed ? 'rgb(255, 0, 0)' : 'rgb(0, 0, 255)';
-      }
-    </script>
+    <script src="../js/three.min.js"></script>
+    <script src="../js/vol1.js"></script>
 </body>
 </html>

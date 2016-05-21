@@ -86,7 +86,7 @@ canvas {
 }
 
 .release-section-header {
-  margin-top: 60px;
+  margin-top: 20px;
   font-family: Times New Roman, Times, serif;
   font-size: 56px;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
@@ -97,13 +97,19 @@ canvas {
 }
 
 .release-purchase-zone {
-  margin-top: 20px;
+  margin-bottom: 70px;
   max-width: 469px;
   font-family: Roboto Mono, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
   line-height: 1.5;
+  background-color: rgba(255,255,255,0.3);
+  box-shadow: 0px 3px 6px rgba(0,0,0,0.4);
+  padding: 6px 6px 12px 6px;
 }
   .release-purchase-zone a {
     color: rgb(0,0,255);
+  }
+  .release-purchase-zone p {
+    margin-top: 5px;
   }
 
 .release-links-header {
@@ -125,13 +131,70 @@ canvas {
       color: rgb(0, 0, 255);
     }
 
-.work-artist {
-
+.work-artist::after {
+  content: " - ";
 }
-  .work-artist::after {
-    content: " - ";
-  }
 
 .work-title {
   font-style: italic;
+}
+
+.release-payment-input-header {
+  display: inline-block;
+  font-size: 22px;
+}
+
+.release-payment-input {
+  font-size: 22px;
+  appearance: none;
+  border-radius: none;
+  box-shadow: none;
+  margin: 0;
+  padding: 5px;
+  border: none;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1), 0 1px 3px rgba(0,0,0,0.15);
+  transition: all 250ms;
+  width: 80px;
+}
+  .release-payment-input:focus {
+    outline: none;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  }
+
+.release-paypal-button {
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  padding: 10px;
+  margin-top: 15px;
+  cursor: pointer;
+
+  font-family: Roboto Mono, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
+  font-size: 24px;
+
+  background-color: white;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  outline: 0;
+
+  transition: all 250ms;
+}
+  .release-paypal-button:focus {
+    outline: 0;
+  }
+  .release-paypal-button:hover {
+    background-color: rgb(5, 73, 249);
+    color: white;
+    border: 1px solid transparent;
+    transform: scale(1.5);
+  }
+
+.floating-money {
+  position: fixed;
+  color: rgb(83, 231, 160);
+  font-family: Roboto Mono, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
+  font-size: 112px;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
+  z-index: 1;
+}
+
+.upside-down {
+  transform: rotate(180deg);
 }
