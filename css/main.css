@@ -97,7 +97,7 @@ canvas {
 }
 
 .release-purchase-zone {
-  margin-bottom: 70px;
+  margin-bottom: 70px; margin-top: 8px;
   max-width: 469px;
   font-family: Roboto Mono, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
   line-height: 1.5;
