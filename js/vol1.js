@@ -134,6 +134,7 @@
       div.style.position = 'absolute';
       div.style.fontSize = '32px';
       div.style.opacity = 0;
+      div.style.zIndex = -1;
       div.style.color = isRed ? 'rgb(255, 0, 0)' : 'rgb(0, 0, 255)';
 
       var left = Math.random() * window.innerWidth * 0.84;

@@ -120,6 +120,7 @@
       div.className = 'logo-text';
       div.style.position = 'absolute';
       div.style.fontSize = '44px';
+      div.style.zIndex = -1;
       div.style.opacity = 0;
 
       var left = Math.random() * window.innerWidth * 0.6;
