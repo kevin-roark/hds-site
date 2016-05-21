@@ -28,74 +28,76 @@
 
 /// True Code
 (function() {
-  var scene, camera, renderer;
+  var scene = new THREE.Scene();
 
-  var ground, ambientLight, spt, bigBox;
-  var boxes = [];
-  var boxesAreMoving = false;
+  var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 20000);
+  camera.position.z = 4000;
+
+  var ambientLight = new THREE.AmbientLight(0x555555, 0.9);
+  scene.add(ambientLight);
+
+  var ground = createGround();
+  ground.position.set(0, -2000, 0);
+  scene.add(ground);
+
+  var bigBox = new THREE.Object3D();
+  bigBox._rotationSpeed = 0.0025;
+  scene.add(bigBox);
 
   var sptColor = {r: 255, g: 175, b: 175, goingBlue: true};
   function sptColorStr() { return 'rgb(' + sptColor.r + ',' + sptColor.g + ',' + sptColor.b + ')'; }
 
-  init();
-  animate();
+  var topLight = createSpotLight(true);
+  topLight.position.set(0, 1500, 1900);
+  scene.add(topLight);
+  //scene.add(spt.shadowCameraHelper); // add this to see shadow helper
 
-  function init() {
-    scene = new THREE.Scene();
+  var frontLight = createSpotLight();
+  frontLight.position.set(200, 0, 1500);
+  scene.add(frontLight);
 
-    camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 20000);
-    camera.position.z = 4000;
+  var backLight = createSpotLight();
+  backLight.position.set(-400, 200, 2500);
+  scene.add(backLight);
 
-    ambientLight = new THREE.AmbientLight(0x555555);
-    scene.add(ambientLight);
+  var sptLights = [topLight, frontLight, backLight];
 
-    ground = createGround();
-    ground.position.set(0, -2000, 0);
-    scene.add(ground);
+  var boxes = [];
+  var boxesAreMoving = false;
+  for (var x = -1000; x <= 1000; x += 200) {
+    for (var z = -1000; z <= 1000; z += 200) {
+      for (var y = -1000; y < 1000; y += 200) {
+        var box = makeBox();
+        box.position.set(x, y, z);
+        box._vel = new THREE.Vector3(0, 0, 0);
+        box._acc = new THREE.Vector3(randomA(), randomA(), randomA());
 
-    bigBox = new THREE.Object3D();
-    bigBox._rotationSpeed = 0.0025;
-    scene.add(bigBox);
-
-    spt = createSpotLight();
-    spt.color = new THREE.Color(sptColorStr());
-    spt.position.set(0, 1500, 2200);
-    scene.add(spt);
-    //scene.add(spt.shadowCameraHelper); // add this to see shadow helper
-
-    for (var x = -1000; x <= 1000; x += 200) {
-      for (var z = -1000; z <= 1000; z += 200) {
-        for (var y = -1000; y < 1000; y += 200) {
-          var box = makeBox();
-          box.position.set(x, y, z);
-          box._vel = new THREE.Vector3(0, 0, 0);
-          box._acc = new THREE.Vector3(randomA(), randomA(), randomA());
-
-          bigBox.add(box);
-          boxes.push(box);
-        }
+        bigBox.add(box);
+        boxes.push(box);
       }
     }
-
-    renderer = new THREE.WebGLRenderer();
-    renderer.setClearColor(0xfefefe);
-    renderer.shadowMap.enabled = true;
-    renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-    renderer.gammaInput = true;
-    renderer.gammaOutput = true;
-    renderer.antialias = true;
-
-    resize();
-    window.addEventListener('resize', resize, false);
-
-    document.body.appendChild(renderer.domElement);
-
-    setTimeout(function() {
-      boxesAreMoving = true;
-
-      setInterval(resetBoxMovements, 3000);
-    }, 8000);
   }
+
+  var renderer = new THREE.WebGLRenderer();
+  renderer.setClearColor(0xfefefe);
+  renderer.shadowMap.enabled = true;
+  renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+  renderer.gammaInput = true;
+  renderer.gammaOutput = true;
+  renderer.antialias = true;
+
+  resize();
+  window.addEventListener('resize', resize, false);
+
+  document.body.appendChild(renderer.domElement);
+
+  animate();
+
+  setTimeout(function() {
+    boxesAreMoving = true;
+
+    setInterval(resetBoxMovements, 3000);
+  }, 8000);
 
   function animate() {
     requestAnimationFrame(animate);
@@ -122,7 +124,11 @@
       sptColor.b -= 1;
       if (sptColor.b === 175) sptColor.goingBlue = true;
     }
-    spt.color = new THREE.Color(sptColorStr());
+
+    var color = new THREE.Color(sptColorStr());
+    sptLights.forEach(function(light) {
+      light.color = color;
+    });
 
     renderer.render(scene, camera);
   }
@@ -149,7 +155,8 @@
     var geometry = new THREE.BoxGeometry(200, 200, 200);
 
     var material = new THREE.MeshPhongMaterial({
-      color: 0xaaaaaa
+      color: 0xaaaaaa,
+      shininess: 1
     });
 
     var mesh = new THREE.Mesh(geometry, material);
@@ -169,9 +176,11 @@
     geometry.computeVertexNormals();
 
     var material = new THREE.MeshPhongMaterial({
-      color: 0xaaaaaa,
-      emissive: 0xaaaaaa,
-      side: THREE.DoubleSide
+      color: 0x999999,
+      emissive: 0x444444,
+      side: THREE.DoubleSide,
+      shininess: 0,
+      reflectivity: 0.25
     });
 
     var mesh = new THREE.Mesh(geometry, material);
@@ -181,14 +190,19 @@
     return mesh;
   }
 
-  function createSpotLight() {
-    var spt = new THREE.SpotLight(0xffffff, 1.5);
-    spt.castShadow = true;
-    spt.shadow.camera.near = 0.1;
-    spt.shadow.camera.far = 20000;
-    spt.shadow.mapSize.width = spt.shadow.mapSize.height = 1024;
-    spt.shadowCameraHelper = new THREE.CameraHelper(spt.shadow.camera); // colored lines
-    spt.angle = 1.0;
+  function createSpotLight(shadow) {
+    var spt = new THREE.SpotLight(0xffffff, 1.0);
+    spt.color = new THREE.Color(sptColorStr());
+
+    if (shadow) {
+      spt.castShadow = true;
+      spt.shadow.camera.near = 0.1;
+      spt.shadow.camera.far = 20000;
+      spt.shadow.mapSize.width = spt.shadow.mapSize.height = 1024;
+      spt.shadowCameraHelper = new THREE.CameraHelper(spt.shadow.camera); // colored lines
+    }
+
+    spt.angle = 1.2;
     spt.exponent = 2.0;
     spt.penumbra = 0.15;
     spt.decay = 1.25;
