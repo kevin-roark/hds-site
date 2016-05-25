@@ -99,16 +99,7 @@
     setInterval(resetBoxMovements, 3000);
   }, 8000);
 
-  var nameVaritions = [
-    'HDS LLC.',
-    'HD SERVICES',
-    'HARMONIOUS DISRUPTION SERVICES',
-    'HAPTIC DATA SIGNALS',
-    'HARD DAY\'S SATISFACTION',
-    'HARMONIC DISTRIBUTION SERVICES',
-    'HIDEOUS DISEASE SYSTEMS',
-    'HAPPINESS DEFEATING SADNESS'
-  ];
+  var nameVaritions = [ 'HAPPINESS', 'HARMONIOUS', 'HD', 'HIDEOUS', 'HARMONIC', 'HARD', 'HAPTIC' ];
 
   setTimeout(function() {
     addVariation();
@@ -119,7 +110,7 @@
       div.textContent = nameVaritions[Math.floor(nameVaritions.length * Math.random())];
       div.className = 'logo-text';
       div.style.position = 'absolute';
-      div.style.fontSize = '44px';
+      div.style.fontSize = '60px';
       div.style.zIndex = -1;
       div.style.opacity = 0;
 
@@ -132,7 +123,7 @@
       document.body.appendChild(div);
 
       setTimeout(function() {
-        div.style.opacity = 1;
+        div.style.opacity = 0.25;
       }, 1);
     }
   }, 7000);
