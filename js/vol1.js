@@ -112,16 +112,7 @@
     }
   }, 1200);
 
-  var nameVaritions = [
-    'HDS LLC.',
-    'HD SERVICES',
-    'HARMONIOUS DISRUPTION SERVICES',
-    'HAPTIC DATA SIGNALS',
-    'HARD DAY\'S SATISFACTION',
-    'HARMONIC DISTRIBUTION SERVICES',
-    'HIDEOUS DISEASE SYSTEMS',
-    'HAPPINESS DEFEATING SADNESS'
-  ];
+  var nameVaritions = [ 'HAPPINESS', 'HARMONIOUS', 'HD', 'HIDEOUS', 'HARMONIC', 'HARD', 'HAPTIC' ];
 
   setTimeout(function() {
     addVariation();
@@ -132,7 +123,7 @@
       div.textContent = nameVaritions[Math.floor(nameVaritions.length * Math.random())] + ' VOL. 1';
       div.className = 'release-title-text vol-1-title-text';
       div.style.position = 'absolute';
-      div.style.fontSize = '32px';
+      div.style.fontSize = '50px';
       div.style.opacity = 0;
       div.style.zIndex = -1;
       div.style.color = isRed ? 'rgb(255, 0, 0)' : 'rgb(0, 0, 255)';
@@ -146,7 +137,7 @@
       document.body.appendChild(div);
 
       setTimeout(function() {
-        div.style.opacity = 1;
+        div.style.opacity = 0.25;
       }, 1);
     }
   }, 9000);
