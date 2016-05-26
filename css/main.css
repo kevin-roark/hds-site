@@ -15,6 +15,11 @@ canvas {
   z-index: -1;
 }
 
+::-moz-selection {
+  background: rgb(0, 255, 0);
+  color: white;
+}
+
 ::selection {
   background: rgb(0, 255, 0);
   color: white;
@@ -43,6 +48,7 @@ canvas {
   font-size: 96px;
   text-shadow: 1px 2px 3px rgba(0, 0, 0, 0.5);
   color: rgb(255, 0, 0);
+  -webkit-transition: opacity 0.5s;
   transition: opacity 0.5s;
 }
 
@@ -84,6 +90,7 @@ canvas {
 .vol-1-title-text {
   color: rgb(255, 0, 0);
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  -webkit-transition: color 3s;
   transition: color 3s;
 }
 
@@ -148,13 +155,16 @@ canvas {
 
 .release-payment-input {
   font-size: 22px;
-  appearance: none;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
   border-radius: none;
   box-shadow: none;
   margin: 0;
   padding: 5px;
   border: none;
   box-shadow: 0 1px 3px rgba(0,0,0,0.1), 0 1px 3px rgba(0,0,0,0.15);
+  -webkit-transition: all 250ms;
   transition: all 250ms;
   width: 80px;
 }
@@ -176,6 +186,8 @@ canvas {
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
   outline: 0;
 
+  -webkit-transition: all 250ms;
+
   transition: all 250ms;
 }
   .release-paypal-button:focus {
@@ -185,7 +197,8 @@ canvas {
     background-color: rgb(5, 73, 249);
     color: white;
     border: 1px solid transparent;
-    transform: scale(1.5);
+    -webkit-transform: scale(1.5);
+            transform: scale(1.5);
   }
 
 .floating-money {
@@ -198,5 +211,6 @@ canvas {
 }
 
 .upside-down {
-  transform: rotate(180deg);
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
 }
