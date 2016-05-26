@@ -78,18 +78,25 @@
     }
   }
 
-  var renderer = new THREE.WebGLRenderer();
-  renderer.setClearColor(0xfefefe);
-  renderer.shadowMap.enabled = true;
-  renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-  renderer.gammaInput = true;
-  renderer.gammaOutput = true;
-  renderer.antialias = true;
+  var renderer;
+  try {
+    renderer = new THREE.WebGLRenderer();
+    renderer.setClearColor(0xfefefe);
+    renderer.shadowMap.enabled = true;
+    renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+    renderer.gammaInput = true;
+    renderer.gammaOutput = true;
+    renderer.antialias = true;
+  } catch (err) {
+    // no-op is chill
+  }
 
   resize();
   window.addEventListener('resize', resize, false);
 
-  document.body.appendChild(renderer.domElement);
+  if (renderer) {
+    document.body.appendChild(renderer.domElement);
+  }
 
   animate();
 
@@ -159,11 +166,15 @@
       light.color = color;
     });
 
-    renderer.render(scene, camera);
+    if (renderer) {
+      renderer.render(scene, camera);
+    }
   }
 
   function resize() {
-    renderer.setSize(window.innerWidth, window.innerHeight);
+    if (renderer) {
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    }
 
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
